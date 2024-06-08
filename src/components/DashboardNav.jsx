@@ -10,7 +10,7 @@ const DashboardNavbar = () => {
 	return (
 		<>
 			<header className="relative z-20 w-full   after:absolute after:left-0 after:top-full after:z-10 after:block after:h-px after:w-full  lg:backdrop-blur-sm lg:after:hidden">
-				<div className="relative mx-auto max-w-full px-6 lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[96rem]">
+				<div className="relative mx-auto max-w-full px-6">
 					<nav
 						aria-label="main navigation"
 						className="flex h-[5.625rem] items-center justify-between font-medium text-[#1F1F1F"
