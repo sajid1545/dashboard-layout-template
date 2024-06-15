@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { RxCaretLeft } from "react-icons/rx";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import logo from "../assets/logo.png";
+import logoMobile from "../assets/titanDashboadLogo.svg";
+import logo from "../assets/titanLogo.png";
 import { sidebarRoutesGenerator } from "../utils/DashboardRoutesGenerator";
 import DashboardNavbar from "./DashboardNav";
 
@@ -28,36 +29,41 @@ const DashboardLayout = () => {
 	const pathname = useLocation().pathname;
 
 	return (
-		<div className="flex">
+		<div className="flex bg-[#0C0A18] text-white">
 			{/* Sidebar */}
 			<div
 				ref={wrapperRef}
 				className={`${
 					open ? "w-72" : "w-20"
-				} bg-gradient-to-b from-blue-700 via-blue-800 to-gray-900 text-white h-screen p-2 lg:p-5 pt-8 relative duration-300 min-h-svh`}>
+				} bg-[#181624] text-[#9D9D9D] h-screen p-2 lg:p-5 pt-8 relative duration-300 min-h-svh`}>
 				<RxCaretLeft
-					color="black"
+					color="white"
 					size={30}
-					className={`absolute cursor-pointer -right-3 top-9 w-7 rounded-full border-2 z-50 bg-white ${!open && "rotate-180"}`}
+					className={`absolute cursor-pointer -right-3 top-9 w-7 rounded-full  z-50 bg-gradient-to-r from-[#9462FF] to-[#075CBF] ${
+						!open && "rotate-180"
+					}`}
 					onClick={() => setOpen(!open)}
 					aria-label="Toggle Sidebar"
 				/>
 
-				<div className="flex gap-x-4 items-center">
-					<img src={logo} className={`cursor-pointer duration-500 ${open && "rotate-[360deg]"}`} alt="Logo" />
-					<h1 className={`text-white origin-left font-medium text-xl duration-200 ${!open && "scale-0"}`}>
-						Designer
-					</h1>
+				<div className="flex gap-x-4 items-center justify-center">
+					{!open ? (
+						<img src={logoMobile} className="cursor-pointer duration-500" alt="Logo" />
+					) : (
+						<img src={logo} className={`cursor-pointer duration-500 h-11`} alt="Logo" />
+					)}
 				</div>
 				<ul className="pt-6">
 					{Menus.map((Menu, index) => (
 						<Link title={Menu.title} key={index} to={Menu.to}>
 							<li
 								className={`flex rounded-md p-2 cursor-pointer ${!open && "justify-center"} ${
-									pathname === Menu.to ? "bg-light-white" : ""
-								} text-gray-300 text-sm items-center gap-x-4 ${Menu.gap ? "mt-9" : "mt-2"}`}>
+									pathname === Menu.to ? "bg-gradient-to-r from-[#9462FF] to-[#075CBF] text-white" : "text-gray-300"
+								}  text-sm items-center gap-x-4 mb-7 p-3 ${Menu.gap ? "mt-9" : "mt-2"}`}>
 								{Menu.src}
-								<span className={`${!open && "hidden"} origin-left duration-200`}>{Menu.title}</span>
+								<span className={`${!open && "hidden"} origin-left duration-200`}>
+									{Menu.title}
+								</span>
 							</li>
 						</Link>
 					))}

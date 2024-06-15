@@ -1,28 +1,26 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "../assets/logo.png";
 
 const DashboardNavbar = () => {
 	const pathname = useLocation().pathname;
+
+	const breadcrumbs = pathname.split("/dashboard/")[1];
 
 	const [isToggleOpen, setIsToggleOpen] = useState(false);
 
 	return (
 		<>
-			<header className="relative z-20 w-full   after:absolute after:left-0 after:top-full after:z-10 after:block after:h-px after:w-full  lg:backdrop-blur-sm lg:after:hidden">
+			<header className="relative z-20 w-full bg-[#0C0A18] text-white  after:absolute after:left-0 after:top-full after:z-10 after:block after:h-px after:w-full  lg:backdrop-blur-sm lg:after:hidden border-b-[1px] border-[#FFFFFF33] px-8">
 				<div className="relative mx-auto max-w-full px-6">
 					<nav
 						aria-label="main navigation"
 						className="flex h-[5.625rem] items-center justify-between font-medium text-[#1F1F1F"
 						role="navigation">
-						<div className="hidden lg:flex items-center gap-3 ">
-							<div>
-								<img src={logo} alt="logo" />
-							</div>
+						<div className="hidden lg:flex items-center flex-col gap-3 ">
 
-							<div>
-								<h1 className="text-xl text-[#B9083D] font-bold">Zenschool</h1>
-							</div>
+							<h1 className="text-[#9D9D9D]">
+								Home / <span className="text-white capitalize"> {breadcrumbs} </span>
+							</h1>
 						</div>
 						{/*      <!-- Mobile trigger --> */}
 						<button
@@ -61,7 +59,7 @@ const DashboardNavbar = () => {
 						<ul
 							role="menubar"
 							aria-label="Select page"
-							className={`absolute flex flex-col  lg:flex-row left-0 top-0 z-[-1] h-[35rem] w-full text-center overflow-hidden  overflow-y-auto overscroll-contain bg-white/90 px-8 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-center gap-10 lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 ${
+							className={`absolute flex flex-col  lg:flex-row left-0 top-0 z-[-1] h-[35rem] w-full text-center overflow-hidden  overflow-y-auto overscroll-contain bg-[#0C0A18] px-8 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-center gap-10 lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 ${
 								isToggleOpen ? "visible opacity-100 backdrop-blur-sm" : "invisible opacity-0"
 							}`}>
 							<Link

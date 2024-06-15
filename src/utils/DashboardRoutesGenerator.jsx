@@ -17,7 +17,7 @@ export const sidebarRoutesGenerator = (role) => {
 		case "teacher":
             roleMenus.push(
                 { title: "Teacher Dashboard", src: <MdDashboard size={25} />, to: "/dashboard" },
-				{ title: "Files ", src: <LuFileSearch size={25} />, gap: true, to: "/dashboard/files" },
+				{ title: "Files ", src: <LuFileSearch size={25} />, to: "/dashboard/files" },
 				{ title: "Setting", src: <IoSettingsOutline size={25} />, to: "/dashboard/settings" }
 			);
 			break;
