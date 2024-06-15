@@ -20,7 +20,7 @@ const DashboardLayout = () => {
 			<div
 				className={` ${
 					open ? "w-72" : "w-20 "
-				} bg-gradient-to-b from-blue-700 via-blue-800 to-gray-900 text-white h-screen p-5  pt-8 relative duration-300 min-h-svh`}>
+				} bg-gradient-to-b from-blue-700 via-blue-800 to-gray-900 text-white h-screen p-2 lg:p-5  pt-8 relative duration-300 min-h-svh`}>
 				<RxCaretLeft
 					color="black"
 					size={30}
@@ -41,7 +41,7 @@ const DashboardLayout = () => {
 				</div>
 				<ul className="pt-6">
 					{Menus.map((Menu, index) => (
-						<Link className="" key={index} to={Menu.to}>
+						<Link title={Menu.title} className="" key={index} to={Menu.to}>
 							<li
 								key={index}
 								className={`flex  rounded-md p-2 cursor-pointer ${
