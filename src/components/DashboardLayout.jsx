@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { RxCaretLeft } from "react-icons/rx";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import logo from "../assets/logo.png";
@@ -7,6 +7,23 @@ import DashboardNavbar from "./DashboardNav";
 
 const DashboardLayout = () => {
 	const [open, setOpen] = useState(true);
+
+	const wrapperRef = useRef(null);
+	useEffect(() => {
+		function handleClickOutside(event) {
+			if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+				setOpen(false);
+			}
+		}
+		// Bind the event listener
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => {
+			// Unbind the event listener on clean up
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, [wrapperRef]);
+
+	
 
 	const role = "teacher";
 
@@ -18,6 +35,7 @@ const DashboardLayout = () => {
 		<div className="flex">
 			{/* Sidebar */}
 			<div
+				ref={wrapperRef}
 				className={` ${
 					open ? "w-72" : "w-20 "
 				} bg-gradient-to-b from-blue-700 via-blue-800 to-gray-900 text-white h-screen p-2 lg:p-5  pt-8 relative duration-300 min-h-svh`}>
@@ -62,7 +80,7 @@ const DashboardLayout = () => {
 				<DashboardNavbar />
 
 				{/* Body */}
-				<div className="h-screen flex-1 p-7">
+				<div className="flex-1 p-7">
 					<h1 className="text-2xl font-semibold ">{<Outlet />}</h1>
 				</div>
 			</div>
